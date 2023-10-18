@@ -20,7 +20,7 @@ while True:
     #api request !!!DONT TOUCH!!!
     bazaar = req.get("https://api.hypixel.net/skyblock/bazaar?key=fe271ec9-3dcd-4b3f-8873-e33b46311e97").json()
 
-    #Calculate price change
+    #Calculate pirce change
     changeBuy=(bazaar['products'][userinput]['quick_status']['buyPrice'])-changeBuyOld
     changeSell=(bazaar['products'][userinput]['quick_status']['sellPrice'])-changeSellOld
 
@@ -36,8 +36,8 @@ while True:
 
     #Print
     print(userinput + ":")
-    print("Instabuy: " + str(bazaar['products'][userinput]['quick_status']['buyPrice']) + " | Change: " + TextColBuy + str(changeBuy) + Fore.WHITE)
-    print("Instasell: " + str(bazaar['products'][userinput]['quick_status']['sellPrice']) + " | Change: " + TextColSell + str(changeSell) + Fore.WHITE)
+    print("Instabuy: " + str(bazaar['products'][userinput]['quick_status']['buyPrice']) + " | Change: " + TextColBuy + str(round(changeBuy, 3)) + Fore.WHITE)
+    print("Instasell: " + str(bazaar['products'][userinput]['quick_status']['sellPrice']) + " | Change: " + TextColSell + str(round(changeSell, 3)) + Fore.WHITE)
 
     print("Sellorders: " + str(bazaar['products'][userinput]['quick_status']['sellOrders']))
     
