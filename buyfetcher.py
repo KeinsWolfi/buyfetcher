@@ -22,7 +22,7 @@ while True:
 
     #Calculate pirce change
     changeBuy=(bazaar['products'][userinput]['quick_status']['buyPrice'])-changeBuyOld
-    changeSell=(bazaar['products'][userinput]['quick_status']['buyPrice'])-changeSellOld
+    changeSell=(bazaar['products'][userinput]['quick_status']['sellPrice'])-changeSellOld
 
     if changeBuy<=0:
         TextColBuy=Fore.GREEN
