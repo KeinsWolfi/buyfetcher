@@ -4,6 +4,7 @@ from datetime import datetime
 from colorama import Fore
 import os
 
+
 os.system("")
 
 userinput = str(input("Enter the item_id (UPPERCASE!) you want to request- "))
@@ -15,6 +16,14 @@ changeBuyOld = 0
 changeSell = 0
 changeSellOld = 0
 
+  
+#read webhook from file
+webhookurlfile= open("webhook.txt","r")
+webhookurl=webhookurlfile.read()
+webhookurlfile.close()
+
+
+
 #apikey
 while True:
     #api request !!!DONT TOUCH!!!
@@ -23,6 +32,22 @@ while True:
     #Calculate pirce change
     changeBuy=(bazaar['products'][userinput]['quick_status']['buyPrice'])-changeBuyOld
     changeSell=(bazaar['products'][userinput]['quick_status']['sellPrice'])-changeSellOld
+
+    
+    #Webhook message content
+    embed = {
+        "description": "Instabuy: " + str(bazaar['products'][userinput]['quick_status']['buyPrice']) + " | Change: " + str(round(changeBuy, 3)) + "\n" + "Instasell: " + str(bazaar['products'][userinput]['quick_status']['sellPrice']) + " | Change: " + str(round(changeSell, 3)) + "\n" + "Sellorders: " + str(bazaar['products'][userinput]['quick_status']['sellOrders']),
+        "title": userinput
+    }
+
+    data = {
+    "embeds": [
+        embed
+    ]
+    }
+
+    #send message to webhook
+    result = req.post(webhookurl, json = data)
 
     if changeBuy<=0:
         TextColBuy=Fore.GREEN
@@ -41,6 +66,7 @@ while True:
 
     print("Sellorders: " + str(bazaar['products'][userinput]['quick_status']['sellOrders']))
     
+    #set changes
     changeBuyOld=bazaar['products'][userinput]['quick_status']['buyPrice']
     changeSellOld=bazaar['products'][userinput]['quick_status']['sellPrice']
 
