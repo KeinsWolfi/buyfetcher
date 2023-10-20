@@ -27,7 +27,7 @@ webhookurlfile.close()
 #apikey
 while True:
     #api request !!!DONT TOUCH!!!
-    bazaar = req.get("https://api.hypixel.net/skyblock/bazaar?key=fe271ec9-3dcd-4b3f-8873-e33b46311e97").json()
+    bazaar = req.get("https://api.hypixel.net/skyblock/bazaar?key=865b2506-9e10-4f9c-9e4d-df99272960ec").json()
 
     #Calculate pirce change
     changeBuy=(bazaar['products'][userinput]['quick_status']['buyPrice'])-changeBuyOld
