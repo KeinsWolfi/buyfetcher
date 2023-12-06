@@ -36,7 +36,7 @@ while True:
     
     #Webhook message content
     embed = {
-        "description": "Instabuy: " + str(bazaar['products'][userinput]['quick_status']['buyPrice']) + " | Change: " + str(round(changeBuy, 3)) + "\n" + "Instasell: " + str(bazaar['products'][userinput]['quick_status']['sellPrice']) + " | Change: " + str(round(changeSell, 3)) + "\n" + "Sellorders: " + str(bazaar['products'][userinput]['quick_status']['sellOrders']),
+        "description": "Instabuy: " + f"{(bazaar['products'][userinput]['quick_status']['buyPrice']):,}" + " | Change: " + f"{(round(changeBuy, 3)):,}" + "\n" + "Instasell: " + f"{(bazaar['products'][userinput]['quick_status']['sellPrice']):,}" + " | Change: " + f"{(round(changeSell, 3)):,}" + "\n" + "Sellorders: " + f"{(bazaar['products'][userinput]['quick_status']['sellOrders']):,}",
         "title": userinput
     }
 
@@ -61,10 +61,10 @@ while True:
 
     #Print
     print(userinput + ":")
-    print("Instabuy: " + str(bazaar['products'][userinput]['quick_status']['buyPrice']) + " | Change: " + TextColBuy + str(round(changeBuy, 3)) + Fore.WHITE)
-    print("Instasell: " + str(bazaar['products'][userinput]['quick_status']['sellPrice']) + " | Change: " + TextColSell + str(round(changeSell, 3)) + Fore.WHITE)
+    print("Instabuy: " + f"{(bazaar['products'][userinput]['quick_status']['buyPrice']):,}".format() + " | Change: " + TextColBuy + f"{(round(changeBuy, 3)):,}" + Fore.WHITE)
+    print("Instasell: " + f"{(bazaar['products'][userinput]['quick_status']['sellPrice']):,}" + " | Change: " + TextColSell + f"{(round(changeSell, 3)):,}" + Fore.WHITE)
 
-    print("Sellorders: " + str(bazaar['products'][userinput]['quick_status']['sellOrders']))
+    print("Sellorders: " + f"{(bazaar['products'][userinput]['quick_status']['sellOrders']):,}")
     
     #set changes
     changeBuyOld=bazaar['products'][userinput]['quick_status']['buyPrice']
